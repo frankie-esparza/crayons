@@ -10,7 +10,7 @@ const { Op } = require('sequelize');
 router.get('/', async (req, res, next) => {
     let errorResult = { errors: [], count: 0, pageCount: 0 };
 
-    // Phase 2B: Classroom Search Filters
+    // Phase 6B: Classroom Search Filters
     /*
         name filter:
             If the name query parameter exists, set the name query
