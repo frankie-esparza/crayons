@@ -61,7 +61,7 @@ students with a `lastName` of "Costa". There should be `14` students with the
 A `lastName` query parameter of `ay` should return all students that have an
 `ay` with any number of characters around it, like "Aylmere" or "Hayden".
 There should be `30` students with a `lastName` that fits the criteria, so the
-`count` property should equal `14`.
+`count` property should equal `30`.
 
 ## Phase 4C: Is Left-handed
 
