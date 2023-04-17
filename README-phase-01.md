@@ -31,7 +31,7 @@ of the results returned from the endpoint.
 
 ## Phase 1C: `GET /supplies/category/:categoryName`
 
-Order the classrooms returned from the `GET /supplies/category/:categoryName`
+Order the supplies returned from the `GET /supplies/category/:categoryName`
 endpoint alphabetically by `name`, then `handed`, both in alphabetical order.
 
 ### Result
