@@ -14,15 +14,15 @@ to be ordered by the name of the classroom first. This means that all supplies
 for the first classroom should be at the top of the supplies returned from
 this endpoint.
 
-Manipulate the query as follows:
+Alter the query as follows:
 
 First, include the classroom as associated data for each supply returned as
 the response.
 
 - Each `Classroom` should only have the attributes: `id`, and `name`.
 
-Then, order the supplies by the `name` of the classroom first, THEN the `name`
-of the supply.
+Then, refactor the order property to now order the supplies by the `name` of the
+classroom first, THEN the `name` of the supply.
 
 ### Result
 
