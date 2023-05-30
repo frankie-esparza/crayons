@@ -1,6 +1,7 @@
 'use strict';
 
 const { Op } = require('sequelize');
+const { Supply } = require('../models');
 
 const commonSupplies = [
   {
@@ -118,7 +119,12 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Supplies', commonSupplies);
+    try {
+      await Supply.bulkCreate(commonSupplies, { validate: true });
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
   },
 
   down: async (queryInterface, Sequelize) => {

@@ -1,6 +1,7 @@
 'use strict';
 
 const { Op } = require('sequelize');
+const { Student } = require('../models');
 
 const studentCount = 267;
 
@@ -84,8 +85,12 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-
-    await queryInterface.bulkInsert('Students', getStudentSeeds());
+    try {
+        await Student.bulkCreate(getStudentSeeds(), { validate: true });
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
   },
 
   down: async (queryInterface, Sequelize) => {

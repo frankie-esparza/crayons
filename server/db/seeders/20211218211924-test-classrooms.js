@@ -39,7 +39,13 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Classrooms', testClassrooms);
+
+    try {
+      await Classroom.bulkCreate(testClassrooms, { validate: true });
+    } catch (err) {
+      console.error(err);
+      throw err;
+    }
   },
 
   down: async (queryInterface, Sequelize) => {
