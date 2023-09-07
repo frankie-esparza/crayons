@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Import model(s)
-const { Classroom } = require('../db/models');
+const { Student, Classroom, StudentClassroom, Supply, sequelize } = require('../db/models');
 const { Op } = require('sequelize');
 
 // List of classrooms
@@ -69,15 +69,49 @@ router.get('/:id', async (req, res, next) => {
     // Phase 5: Supply and Student counts, Overloaded classroom
     // Phase 5A: Find the number of supplies the classroom has and set it as
     // a property of supplyCount on the response
+    let classroomObj = classroom.toJSON();
+
+    classroomObj.supplyCount = await Supply.count({
+        where: {
+            classroomId: req.params.id
+        }
+    });
+
     // Phase 5B: Find the number of students in the classroom and set it as
     // a property of studentCount on the response
+
+    // ===================================
+    // TODO -
+    // 1) figure out how to remove extra properties
+    // 2) increase efficiency - could number of queries be reduced?
+    // ===================================
+
+    classroomObj.averageGrade = await StudentClassroom.findAll({
+        attributes: {
+            include: [
+                [
+                    sequelize.fn("AVG", sequelize.col("grade")),
+                    "averageGrade"
+                ],
+                [
+                    sequelize.fn("COUNT", sequelize.col("grade")),
+                    "studentCount"
+                ]
+            ]
+        },
+        where: {
+            classroomId: req.params.id
+        }
+    });
+
     // Phase 5C: Calculate if the classroom is overloaded by comparing the
     // studentLimit of the classroom to the number of students in the
     // classroom
-    // Optional Phase 5D: Calculate the average grade of the classroom
-    // Your code here
+    classroomObj.overloaded = (classroom.studentLimit < classroomObj.studentCount);
 
-    res.json(classroom);
+    // Optional Phase 5D: Calculate the average grade of the classroom
+
+    res.send(classroomObj);
 });
 
 // Export class - DO NOT MODIFY
