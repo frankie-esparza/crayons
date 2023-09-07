@@ -36,7 +36,36 @@ router.get('/', async (req, res, next) => {
     */
     const where = {};
 
-    // Your code here
+    if (req.query.name) {
+        where.name = {
+            [Op.substring]: req.query.name
+        }
+    }
+
+    if (req.query.studentLimit) {
+        // if studentLimit query contains a comma
+        if (req.query.studentLimit.indexOf(',') !== -1) {
+            let queryParts = req.query.studentLimit.split(',');
+            let [min, max] = queryParts;
+
+            // if both parts of studentLimit query are integers
+            if (typeof Number(min) === "number" && typeof Number(max) === "number") {
+                where.studentLimit = {
+                    [Op.and]: {
+                        [Op.gt]: [min],
+                        [Op.lt]: [max]
+                    }
+                }
+                // if at least one of queryParts is not an integer
+            } else {
+                errorResult.errors.push("Student Limit should be two numbers: min,max");
+            }
+            // if studentLimit query does NOT contain a comma
+        } else {
+            where.studentLimit = req.query.studentLimit
+        }
+    }
+
 
     const classrooms = await Classroom.findAll({
         attributes: ['id', 'name', 'studentLimit'],
