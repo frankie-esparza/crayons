@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Import model(s)
-const { Supply, Classroom } = require('../db/models');
+const { Supply, Classroom, Student, StudentClassroom } = require('../db/models');
 
 // List of supplies by category
 router.get('/category/:categoryName', async (req, res, next) => {
@@ -50,8 +50,10 @@ router.get('/scissors/calculate', async (req, res, next) => {
     // left-handed "Safety Scissors" currently in all classrooms
     // result.totalNumScissors should equal the total number of all
     // "Safety Scissors" currently in all classrooms, regardless of
-    // handed-ness
-    // Your code here
+    // handed-nesss
+    result.totalNumScissors = await Supply.count({ where: { name: "Safety Scissors" } });
+    result.numRightyScissors = await Supply.count({ where: { handed: "right" } });
+    result.numLeftyScissors = await Supply.count({ where: { handed: "left" } });
 
     // Phase 10B: Total number of right-handed and left-handed students in all
     // classrooms
@@ -66,7 +68,18 @@ router.get('/scissors/calculate', async (req, res, next) => {
     // right-handed students in all classrooms.
     // result.numLeftHandedStudents should equal the total number of
     // left-handed students in all classrooms
-    // Your code here
+    let numScissorsNeeded = await StudentClassroom.count();
+    result.numRightHandedStudents = await StudentClassroom.count({
+        include: {
+            model: Student,
+            attributes: "handed",
+            where: {
+                leftHanded: false
+            }
+        }
+    });
+
+    result.numLeftHandedStudents = numScissorsNeeded - result.numRightHandedStudents;
 
     // Phase 10C: Total number of scissors still needed for all classrooms
     // result.numRightyScissorsStillNeeded should equal the total number
@@ -78,7 +91,8 @@ router.get('/scissors/calculate', async (req, res, next) => {
     // result.numLeftyScissorsStillNeeded should equal the total number
     // of left-handed scissors still needed to be added to all the
     // classrooms
-    // Your code here
+    result.numRightyScissorsStillNeeded = result.numRightHandedStudents - result.numRightyScissors;
+    result.numLeftyScissorsStillNeeded = result.numLeftHandedStudents - result.numLeftyScissors;
 
     res.json(result);
 });
