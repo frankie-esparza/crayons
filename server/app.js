@@ -16,6 +16,11 @@ app.use('/classrooms', require('./routes/classrooms'));
 app.use('/students', require('./routes/students'));
 app.use('/supplies', require('./routes/supplies'));
 
+// TODO
+// Connect pagination middleware
+// const middlewares = require('./utils/middlewares');
+// app.use(middlewares.paginationHandler);
+
 // Root route - DO NOT MODIFY
 app.get('/', (req, res) => {
     res.json({

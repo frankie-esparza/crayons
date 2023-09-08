@@ -8,6 +8,12 @@ const { Op } = require("sequelize");
 
 const maxResultsPerPage = 200;
 
+
+// TODO
+// Connect pagination middleware
+// const middlewares = require('../utils/middlewares');
+// router.use(middlewares.paginationHandler);
+
 // List
 router.get('/', async (req, res, next) => {
     let errorResult = { errors: [], count: 0, pageCount: 0 };

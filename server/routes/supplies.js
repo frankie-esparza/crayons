@@ -5,6 +5,11 @@ const router = express.Router();
 // Import model(s)
 const { Supply, Classroom, Student, StudentClassroom } = require('../db/models');
 
+// TODO
+// Connect pagination middleware
+// const middlewares = require('../utils/middlewares');
+// router.use(middlewares.paginationHandler);
+
 // List of supplies by category
 router.get('/category/:categoryName', async (req, res, next) => {
     // Phase 1C:
