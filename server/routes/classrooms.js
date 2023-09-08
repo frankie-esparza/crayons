@@ -6,6 +6,11 @@ const router = express.Router();
 const { Student, Classroom, StudentClassroom, Supply, sequelize } = require('../db/models');
 const { Op } = require('sequelize');
 
+// TODO
+// Connect pagination middleware
+// const middlewares = require('../utils/middlewares');
+// router.use(middlewares.paginationHandler);
+
 // List of classrooms
 router.get('/', async (req, res, next) => {
     let errorResult = { errors: [], count: 0, pageCount: 0 };
