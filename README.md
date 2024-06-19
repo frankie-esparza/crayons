@@ -2,6 +2,9 @@
 A backend API for ordering supplies for a classroom built with Sequelize, SQLite, and Express 
 <br></br>
 
+![Crayons Demo]([https://storage.googleapis.com/frankie-esparza-portfolio/gifs/yuca.gif](https://storage.googleapis.com/frankie-esparza-portfolio/gifs/crayons.gif)
+<br></br>
+
 ## Features 
 - Give me a list of all students, classrooms, or supplies
     - show me everything at once
