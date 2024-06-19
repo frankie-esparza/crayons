@@ -2,7 +2,7 @@
 A backend API for ordering supplies for a classroom built with Sequelize, SQLite, and Express 
 <br></br>
 
-![Crayons Demo]([https://storage.googleapis.com/frankie-esparza-portfolio/gifs/yuca.gif](https://storage.googleapis.com/frankie-esparza-portfolio/gifs/crayons.gif)
+<img src="https://storage.googleapis.com/frankie-esparza-portfolio/gifs/crayons.gif" width="700">
 <br></br>
 
 ## Features 
