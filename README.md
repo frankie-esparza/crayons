@@ -2,7 +2,6 @@
 A backend API for ordering supplies for a classroom 
 <br></br>
 
-
 ## Features 
 1. Get `students`, `classrooms`, & `supplies` & order by: 
     - alphabetically 
@@ -20,9 +19,7 @@ A backend API for ordering supplies for a classroom
 4. **Filters** 
     - get only students with a certain `first name` or `last name` 
     - get only supplies that are `lefty`
-    - 
 <br></br>
-
 
 ## Setup 
 - `cd server`
