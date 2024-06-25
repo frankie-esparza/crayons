@@ -5,9 +5,10 @@ API for ordering supplies for a classroom built with Sequelize, SQLite, and Expr
 <br></br>
 
 ## Features
-- **Get lists** of all of the 🏫 classrooms, 🎓 students, & ✏️ supplies in the school
-- 📖 **Pagination** - get all of the information above in smaller chunks
-- **Aggregation** - get metrics for a particular 🏫 classroom (total students, total supplies, average grade level, teacher-to-student ratio)
+- **Query the database** - e.g. get a list of all of the ✏️ supplies in the school
+- **Get relationships between tables** - e.g. get a list of all of the 🎓 students in a particular 🏫 classroom
+- 📖 **Pagination** - get subsets of the information above (e.g. show me only 10 results at a time)
+- 🎒 **Aggregation** - get summary metrics for a particular 🏫 classroom (e.g. total students, total supplies, average grade level, teacher-to-student ratio)
 <br></br>
 
 <img src="https://storage.googleapis.com/frankie-esparza-portfolio/gifs/crayons.gif" width="500">
