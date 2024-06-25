@@ -1,11 +1,20 @@
 # 🖍️ Crayons API
 API for ordering supplies for a classroom built with Sequelize, SQLite, and Express 
+
+🎬 Watch the demo video at [frankie.engineer/more](https://frankie.engineer/more)
+<br></br>
+
+## Features
+- **Get lists** of all of the 🏫 classrooms, 🎓 students, & ✏️ supplies in the school
+- 📖 **Pagination** - get all of the information above in smaller chunks
+- **Aggregation** - get metrics for a particular 🏫 classroom (total students, total supplies, average grade level, teacher-to-student ratio)
 <br></br>
 
 <img src="https://storage.googleapis.com/frankie-esparza-portfolio/gifs/crayons.gif" width="500">
 
 ## Database Structure 
 ![Student-Classroom-Supply-db-schema](https://appacademy-open-assets.s3.us-west-1.amazonaws.com/Modular-Curriculum/content/week-11/practices/Student-Classroom-Supply-db-schema.png)
+<br></br>
 
 ## Usage
 ### 🏫 GET /classrooms/:id
@@ -32,7 +41,7 @@ Get details about the classroom
   ],
   "Students": [
     {
-      "firstName": "Michael",
+      "firstName": "Mikey",
       "lastName": "Flynn"
     }
   ],
@@ -71,7 +80,7 @@ Get supplies related to a specific task e.g. 'Gluing', 'Cutting', 'Pasting', or 
     "name": "#2 Pencil",
     "Classroom": {
       "id": 16,
-      "name": "Ms. Johnson"
+      "name": "Ms. Shedletsky"
     }
   },
   ...
@@ -79,7 +88,7 @@ Get supplies related to a specific task e.g. 'Gluing', 'Cutting', 'Pasting', or 
 ```
 
 
-### 📚 Pagination
+### 📖 Pagination
 Specify the number of results you want to fetch using query params
 - `page` where to fetch
 - `size` number of results to fetch
