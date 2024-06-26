@@ -11,7 +11,7 @@ API for ordering supplies for a classroom built with Sequelize, SQLite, and Expr
 - 🎒 **Aggregation** - get summary metrics for a particular 🏫 classroom (e.g. total students, total supplies, average grade level, teacher-to-student ratio)
 <br></br>
 
-<img src="https://storage.googleapis.com/frankie-esparza-portfolio/gifs/crayons.gif" width="500">
+<img src="https://storage.googleapis.com/frankie-esparza-portfolio/gifs/crayons-1.gif" width="500">
 
 ## Database Structure 
 ![Student-Classroom-Supply-db-schema](https://appacademy-open-assets.s3.us-west-1.amazonaws.com/Modular-Curriculum/content/week-11/practices/Student-Classroom-Supply-db-schema.png)
